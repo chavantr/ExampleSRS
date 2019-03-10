@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SchoolDetailsActivity" android:padding="15dp">
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblName"/>
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblAddress"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblSchoolFee"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblSecurity"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblStaff"/>
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblRTE"/>
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblTransport"/>
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblDaycare"/>
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
+              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblWebsite"/>
+
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnViewMap"
+            android:text="@string/view_on_map" android:layout_marginTop="15dp"/>
+
+
+</LinearLayout>

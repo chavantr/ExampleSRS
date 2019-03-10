@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">ExampleSRS</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_address">Enter address</string>
+    <string name="enter_number">Enter number</string>
+    <string name="register">Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="fees">Fees</string>
+    <string name="distance">Distance</string>
+    <string name="day_care">Day care</string>
+    <string name="rtb">RTB</string>
+    <string name="top_school_in_city">Top school in city</string>
+    <string name="transport_facility">Transport facility</string>
+    <string name="qualified_staff">Qualified staff</string>
+    <!--<string name="search">Search</string>-->
+    <string name="school">Schools</string>
+    <string name="profile">Personal details</string>
+    <string name="registration">Registration</string>
+    <string name="enter_age">Enter age</string>
+    <string name="enter_child_name">Enter child name</string>
+    <string name="enter_child_age">Enter child age</string>
+    <string name="enter_income">Enter income</string>
+    <string name="save">Save</string>
+    <string name="enter_school_name_to_search">Enter school name to search</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="view_on_map">View on map</string>
+
+    <string-array name="schoolboard">
+        <item>Select board</item>
+        <item>SSC</item>
+        <item>CBSC</item>
+        <item>ICSE</item>
+    </string-array>
+
+    <string-array name="co">
+        <item>Select coaided</item>
+        <item>All</item>
+        <item>Girl only</item>
+        <item>Boys only</item>
+
+    </string-array>
+
+
+    <string-array name="standarth">
+        <item>Select standard</item>
+        <item>All</item>
+        <item>Pre school</item>
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+        <item>11th</item>
+        <item>12th</item>
+
+
+    </string-array>
+
+    <string-array name="gender">
+
+        <item>Select gender</item>
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
+
+</resources>
