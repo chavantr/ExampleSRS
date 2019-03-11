@@ -13,7 +13,7 @@
 
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
-              android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblAddress"/>
+                  android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblAddress"/>
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textStyle="bold"
               android:padding="7dp" android:gravity="center_vertical" android:id="@+id/lblSchoolFee"/>

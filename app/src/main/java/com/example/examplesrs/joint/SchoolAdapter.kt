@@ -27,6 +27,7 @@ class SchoolAdapter(lst: List<School>?) : RecyclerView.Adapter<SchoolAdapter.Sch
 
         viewHolder.lblName.setOnClickListener {
 
+            onSchoolSelectedListener.onSchoolSelected(lstSchools!![position])
 
 
         }

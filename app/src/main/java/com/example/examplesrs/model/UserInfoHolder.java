@@ -8,6 +8,8 @@ public class UserInfoHolder {
     private SearchCriteria searchCriteria;
     private PersonalDetails personalDetails;
 
+    private School school;
+
     public static UserInfoHolder getInstance() {
         return UserInfoHolderHelper.INSTANCE;
     }
@@ -34,6 +36,14 @@ public class UserInfoHolder {
 
     public void setPersonalDetails(PersonalDetails personalDetails) {
         this.personalDetails = personalDetails;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     public static class UserInfoHolderHelper {

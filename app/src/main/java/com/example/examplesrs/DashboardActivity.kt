@@ -1,5 +1,6 @@
 package com.example.examplesrs
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -7,6 +8,8 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -29,6 +32,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     private lateinit var progressDialogUtil: ProgressDialogUtil
     private lateinit var schoolAdapter: SchoolAdapter
+
+    private var tsc = ArrayList<School>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +61,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         }
 
+        txtSearch.addTextChangedListener(filterSchool)
+
         btnFilter.setOnClickListener {
             val intent = Intent(this@DashboardActivity, SearchSchoolResult::class.java)
             startActivityForResult(intent, 1001)
@@ -72,6 +79,42 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         lstSchools.layoutManager = LinearLayoutManager(this)
 
         init()
+    }
+
+    private val filterSchool = object : TextWatcher {
+
+        override fun afterTextChanged(input: Editable?) {
+
+            if (input.toString().isNotEmpty()) {
+
+                tsc.clear()
+
+                for (i in UserInfoHolder.getInstance().schools.indices) {
+                    if (UserInfoHolder.getInstance().schools[i].name.contains(input.toString(), true)) {
+                        tsc.add(UserInfoHolder.getInstance().schools[i])
+                    }
+                }
+
+                schoolAdapter = SchoolAdapter(tsc)
+                schoolAdapter.setOnItemListener(this@DashboardActivity)
+                lstSchools.adapter = schoolAdapter
+
+            } else {
+                schoolAdapter = SchoolAdapter(UserInfoHolder.getInstance().schools)
+                schoolAdapter.setOnItemListener(this@DashboardActivity)
+                lstSchools.adapter = schoolAdapter
+            }
+
+        }
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
     }
 
     override fun onBackPressed() {
@@ -118,17 +161,75 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         if (result!!.isNotEmpty()) {
             UserInfoHolder.getInstance().schools = result
             schoolAdapter = SchoolAdapter(result)
-
+            schoolAdapter.setOnItemListener(this)
             lstSchools.adapter = schoolAdapter
-            //val intent = Intent(this@DashboardActivity, ShowSchoolActivity::class.java)
-            //startActivity(intent)
         } else {
             Toast.makeText(this@DashboardActivity, "Error occurred", Toast.LENGTH_LONG).show()
         }
-
     }
 
-    override fun onSchoolSelected(item: School) {
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1001) {
+                if (UserInfoHolder.getInstance().schools.isNotEmpty()) {
+                    var lst = ArrayList<School>()
+                    for (i in UserInfoHolder.getInstance().schools.indices) {
+                        if (checkFalse(i)) {
+                            lst.add(UserInfoHolder.getInstance().schools[i])
+                        } else if (checkTrue(i)) {
+                            if (checkFee(i)) {
+                                lst.add(UserInfoHolder.getInstance().schools[i])
+                            }
+                        }
+                    }
+                    schoolAdapter = SchoolAdapter(lst)
+                    schoolAdapter.setOnItemListener(this@DashboardActivity)
+                    lstSchools.adapter = schoolAdapter
+                }
+            }
+        }
+    }
+
+    private fun checkTrue(i: Int): Boolean {
+        return UserInfoHolder.getInstance().schools[i].daycaredata.equals(
+            "yes",
+            false
+        ) || UserInfoHolder.getInstance().schools[i].staff.equals(
+            "yes",
+            false
+        ) || UserInfoHolder.getInstance().schools[i].security.equals(
+            "yes",
+            false
+        ) || UserInfoHolder.getInstance().schools[i].rtedata.equals(
+            "yes",
+            false
+        ) || UserInfoHolder.getInstance().schools[i].daycaredata.equals("yes", false)
+    }
+
+    private fun checkFalse(i: Int): Boolean {
+        return UserInfoHolder.getInstance().schools[i].daycaredata.equals(
+            "no",
+            false
+        ) && UserInfoHolder.getInstance().schools[i].staff.equals(
+            "no",
+            false
+        ) && UserInfoHolder.getInstance().schools[i].security.equals(
+            "no",
+            false
+        ) && UserInfoHolder.getInstance().schools[i].rtedata.equals(
+            "no",
+            false
+        ) && UserInfoHolder.getInstance().schools[i].daycaredata.equals("no", false)
+    }
+
+    private fun checkFee(i: Int) =
+        UserInfoHolder.getInstance().schools[i].fee.toInt() <= UserInfoHolder.getInstance().searchCriteria.fee
+
+
+    override fun onSchoolSelected(item: School) {
+        UserInfoHolder.getInstance().school = item
+        val intent = Intent(this@DashboardActivity, SchoolDetailsActivity::class.java)
+        startActivity(intent)
     }
 }
