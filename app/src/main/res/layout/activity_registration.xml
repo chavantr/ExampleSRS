@@ -83,6 +83,7 @@
                                                          android:hint="@string/enter_number"
                                                          android:inputType="number"
                                                          android:maxEms="10"
+                                                         android:maxLength="10"
                                                          android:id="@+id/txtPhone"/>
 
 

@@ -7,7 +7,7 @@
     <string name="enter_name">Enter name</string>
     <string name="enter_email">Enter email</string>
     <string name="enter_address">Enter address</string>
-    <string name="enter_number">Enter number</string>
+    <string name="enter_number">Enter mobile number</string>
     <string name="register">Register</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_dashboard">Dashboard</string>
@@ -20,7 +20,7 @@
     <string name="fees">Fees</string>
     <string name="distance">Distance</string>
     <string name="day_care">Day care</string>
-    <string name="rtb">RTB</string>
+    <string name="rtb">RTE</string>
     <string name="top_school_in_city">Top school in city</string>
     <string name="transport_facility">Transport facility</string>
     <string name="qualified_staff">Qualified staff</string>
@@ -37,6 +37,9 @@
     <string name="search">Search</string>
     <string name="filter">Filter</string>
     <string name="view_on_map">View on map</string>
+    <string name="reset_password">Reset password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="forgot_password">Forgot password</string>
 
     <string-array name="schoolboard">
         <item>Select board</item>

@@ -10,11 +10,11 @@
                                                    android:layout_height="wrap_content"
                                                    android:id="@+id/tilUserName"
                                                    app:layout_constraintTop_toTopOf="parent"
-                                                   android:layout_marginTop="16dp"
+                                                   android:layout_marginTop="55dp"
                                                    app:layout_constraintStart_toStartOf="parent"
-                                                   android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+                                                   android:layout_marginStart="16dp"
                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                   android:layout_marginEnd="16dp" android:layout_marginRight="16dp">
+                                                   android:layout_marginEnd="16dp">
 
         <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
@@ -47,10 +47,10 @@
 
     <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnLogin"
             android:text="@string/sign_in" app:layout_constraintTop_toBottomOf="@id/tilPassword"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"/>
+    />
 
 
     <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnSignUp"
@@ -59,5 +59,13 @@
             android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"/>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnForgotPassword"
+            android:text="@string/forgot_password" app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"/>
+
 
 </android.support.constraint.ConstraintLayout>
