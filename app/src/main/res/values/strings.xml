@@ -42,14 +42,14 @@
     <string name="forgot_password">Forgot password</string>
 
     <string-array name="schoolboard">
-        <item>Select board</item>
+        <item>Select</item>
         <item>SSC</item>
         <item>CBSC</item>
         <item>ICSE</item>
     </string-array>
 
     <string-array name="co">
-        <item>Select coaided</item>
+        <item>Select</item>
         <item>All</item>
         <item>Girl only</item>
         <item>Boys only</item>
@@ -58,7 +58,7 @@
 
 
     <string-array name="standarth">
-        <item>Select standard</item>
+        <item>Select</item>
         <item>All</item>
         <item>Pre school</item>
         <item>1st</item>

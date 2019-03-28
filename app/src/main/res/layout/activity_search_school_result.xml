@@ -13,14 +13,34 @@
             tools:context=".DashboardActivity">
 
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fees"
+        <!--<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fees"
                   android:id="@+id/lblFee" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-                  android:layout_marginTop="16dp" />
+                  android:layout_marginTop="16dp"/>
 
 
         <SeekBar android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/skFee"
-                 android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="16dp"/>
+                 android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginTop="16dp"/>-->
 
+
+        <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                       android:id="@+id/tilFees"
+                                                       android:layout_marginLeft="16dp"
+                                                       android:layout_marginRight="16dp"
+                                                       android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                                                             android:id="@+id/txtFees"
+                                                             android:hint="Fees"
+                                                             android:maxLength="6"
+                                                             android:inputType="number"
+                                                             android:layout_height="wrap_content"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:padding="7dp"
+                  android:text="Select board" android:textColor="@color/colorAccent"/>
 
         <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
                  android:layout_marginStart="16dp"
@@ -52,6 +72,10 @@
                   android:layout_marginEnd="16dp" android:text="@string/rtb"
                   android:id="@+id/chkRTB" android:layout_marginTop="16dp"/>
 
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:padding="7dp"
+                  android:text="Select coaided" android:textColor="@color/colorAccent"/>
+
         <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
                  android:layout_marginStart="16dp"
                  android:layout_marginEnd="16dp"
@@ -69,6 +93,10 @@
                   android:layout_marginEnd="16dp" android:text="@string/transport_facility"
                   android:id="@+id/chkFacitran" android:layout_marginTop="16dp"/>
 
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:padding="7dp"
+                  android:text="Select standard" android:textColor="@color/colorAccent"/>
 
         <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
                  android:layout_marginStart="16dp"

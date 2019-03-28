@@ -1,6 +1,5 @@
 package com.example.examplesrs
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -10,13 +9,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.examplesrs.joint.OnSchoolSelectedListener
 import com.example.examplesrs.joint.SchoolAdapter
 import com.example.examplesrs.model.School
-import com.example.examplesrs.model.SearchCriteria
 import com.example.examplesrs.model.UserInfoHolder
 import com.example.examplesrs.process.FindSchoolAsync
 import com.example.examplesrs.process.OnSearchSchoolListener
@@ -170,7 +167,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                     for (i in UserInfoHolder.getInstance().schools.indices) {
                         if (checkFalse(i)) {
                             lst.add(UserInfoHolder.getInstance().schools[i])
-                        } else if (checkTrue(i)) {
+                        }
+                        if (checkTrue(i)) {
                             if (checkFee(i)) {
                                 lst.add(UserInfoHolder.getInstance().schools[i])
                             }

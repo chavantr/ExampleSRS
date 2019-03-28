@@ -18,25 +18,12 @@ class SearchSchoolResult : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_school_result)
-
-
-        skFee.incrementProgressBy(100)
-
         skDistance.incrementProgressBy(100)
-
-
-        skFee.max = 100000
-
         skDistance.max = 100000
-
-        skFee.setOnSeekBarChangeListener(feeListener)
-
         skDistance.setOnSeekBarChangeListener(distanceListener)
-
         btnSearch.setOnClickListener {
-
             var searchCriteria = SearchCriteria()
-            searchCriteria.fee = skFee.progress
+            searchCriteria.fee = if (txtFees.text!!.isEmpty()) 0 else txtFees.text.toString().toInt()
             searchCriteria.iboard = spnI.selectedItem.toString()
             searchCriteria.distance = skDistance.progress
             searchCriteria.dayCare = chkDayCare.isChecked
@@ -47,12 +34,9 @@ class SearchSchoolResult : AppCompatActivity() {
             searchCriteria.standard = spnStandarth.selectedItem.toString()
             searchCriteria.qualified = chkQuali.isChecked
             UserInfoHolder.getInstance().searchCriteria = searchCriteria
-
             var intent = Intent()
             setResult(RESULT_OK)
             finish()
-
-
         }
     }
 
@@ -62,7 +46,7 @@ class SearchSchoolResult : AppCompatActivity() {
 
             fee = p1
 
-            lblFee.text = "Fee $fee (Rs)"
+            //lblFee.text = "Fee $fee (Rs)"
 
         }
 
