@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.examplesrs.model.User
+import com.example.examplesrs.model.UserInfoHolder
 import com.example.examplesrs.process.LoginAsync
 import com.example.examplesrs.process.OnLoginListener
 import com.example.examplesrs.process.ProgressDialogUtil
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity(), OnLoginListener {
     override fun onLoginSuccess(user: User?) {
         progressDialogUtil.hide()
         if (null != user) {
+            UserInfoHolder.getInstance().user = user
             val intent = Intent(this@MainActivity, DashboardActivity::class.java)
             startActivity(intent)
         } else {

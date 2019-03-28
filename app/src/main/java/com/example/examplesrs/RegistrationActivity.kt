@@ -19,20 +19,15 @@ class RegistrationActivity : AppCompatActivity(), OnRegistrationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
         progressDialogUtil = ProgressDialogUtil(this)
-
         btnRegister.setOnClickListener {
             if (validate()) {
                 init()
             } else {
-                Toast.makeText(this@RegistrationActivity, "Enter fields", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@RegistrationActivity, "Enter fields with correct format", Toast.LENGTH_LONG).show()
             }
         }
-
         btnCancel.setOnClickListener { finish() }
-
-
     }
 
     private fun init() {
@@ -50,7 +45,7 @@ class RegistrationActivity : AppCompatActivity(), OnRegistrationListener {
     }
 
     private fun validate(): Boolean =
-        txtPassword.text!!.isNotEmpty() && txtEmail.text!!.isNotEmpty() && txtPhone.text!!.isNotEmpty() && txtPhone.text!!.isNotEmpty()
+        txtPassword.text!!.isNotEmpty() && txtEmail.text!!.isNotEmpty() && txtPhone.text!!.isNotEmpty() && txtPhone.text!!.isNotEmpty() && txtPhone.text!!.toString().length == 10
 
     override fun onRegistrationComplete(result: String?) {
         progressDialogUtil.hide()

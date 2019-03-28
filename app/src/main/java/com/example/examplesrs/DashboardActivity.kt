@@ -131,22 +131,16 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         findSchoolAsync.setOnFindSchoolListener(this, JSONObject())
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.dashboard, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_profle -> {
                 val intent = Intent(this@DashboardActivity, ProfileActivity::class.java)
+                startActivity(intent)
+                drawer_layout.closeDrawer(GravityCompat.START)
+                return true
+            }
+            R.id.nav_change_pass -> {
+                val intent = Intent(this@DashboardActivity, ForgotPasswordActivity::class.java)
                 startActivity(intent)
                 drawer_layout.closeDrawer(GravityCompat.START)
                 return true
@@ -167,7 +161,6 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             Toast.makeText(this@DashboardActivity, "Error occurred", Toast.LENGTH_LONG).show()
         }
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {

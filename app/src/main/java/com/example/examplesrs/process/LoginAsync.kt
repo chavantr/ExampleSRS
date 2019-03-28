@@ -10,18 +10,27 @@ class LoginAsync : AsyncTask<JSONObject, Void, User?>() {
 
     override fun doInBackground(vararg params: JSONObject?): User? {
         val response = HttpConnectionUtil().requestPost(Constants.URL + Constants.LOGIN, params[0])
-        if (response.isNotEmpty()) {
-            val jNode = JSONObject(response)
-            var user = User()
-            user.id = jNode.getInt("Id")
-            user.name = jNode.getString("Name")
-            user.password = jNode.getString("Password")
-            user.email = jNode.getString("Email")
-            user.number = jNode.getString("Number")
-            return user
-
-        } else {
-            return null
+        return when {
+            response.isNotEmpty() -> {
+                val jNode = JSONObject(response)
+                var user = User()
+                user.id = jNode.getInt("Id")
+                user.name = jNode.getString("Name")
+                user.password = jNode.getString("Password")
+                user.email = jNode.getString("Email")
+                user.number = jNode.getString("Number")
+                user.type = jNode.getString("Type")
+                user.gender = jNode.getString("Gender")
+                user.age = jNode.getString("Age")
+                user.childName = jNode.getString("ChidName")
+                user.childGender = jNode.getString("ChildGender")
+                user.dob = jNode.getString("Dob")
+                user.childAge = jNode.getString("ChildAge")
+                user.income = jNode.getString("Income")
+                user.address = jNode.getString("Address")
+                user
+            }
+            else -> null
         }
     }
 

@@ -79,7 +79,7 @@
 
     <string-array name="gender">
 
-        <item>Select gender</item>
+        <item>Select</item>
         <item>Male</item>
         <item>Female</item>
 

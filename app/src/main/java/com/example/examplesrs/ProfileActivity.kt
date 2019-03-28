@@ -1,9 +1,10 @@
 package com.example.examplesrs
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.example.examplesrs.model.UserInfoHolder
 import com.example.examplesrs.process.OnPersonalDetailsListener
 import com.example.examplesrs.process.PersonalDetailsAsync
 import com.example.examplesrs.process.ProgressDialogUtil
@@ -20,6 +21,27 @@ class ProfileActivity : AppCompatActivity(), OnPersonalDetailsListener {
         progressDialogUtil = ProgressDialogUtil(this)
         btnSave.setOnClickListener {
             init()
+        }
+
+        var user = UserInfoHolder.getInstance().user
+        txtName.setText(user.name)
+        spngender.setSelection(getPositionGender(user.gender))
+        txtage.setText(user.age)
+        txtChildName.setText(user.childName)
+        spnchildgender.setSelection(getPositionGender(user.childGender))
+        txtdob.setText(user.dob)
+        txtchildage.setText(user.childAge)
+        txtIncome.setText(user.income)
+        txtaddress.setText(user.address)
+
+    }
+
+    private fun getPositionGender(type: String): Int {
+        return when (type.toLowerCase()) {
+            "Select".toLowerCase() -> 0
+            "Male".toLowerCase() -> 1
+            "Female".toLowerCase() -> 2
+            else -> 0
         }
     }
 

@@ -11,6 +11,18 @@
                 android:title="Personal details"/>
 
 
+        <item
+                android:id="@+id/nav_recent"
+                android:icon="@drawable/ic_wrap_text_black_24dp"
+                android:visible="false"
+                android:title="Recent schools"/>
+
+        <item
+                android:id="@+id/nav_change_pass"
+                android:icon="@drawable/ic_security_black_24dp"
+                android:title="Change password"/>
+
+
     </group>
 
 

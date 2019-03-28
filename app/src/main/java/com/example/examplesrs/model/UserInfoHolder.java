@@ -7,8 +7,8 @@ public class UserInfoHolder {
     private List<School> schools;
     private SearchCriteria searchCriteria;
     private PersonalDetails personalDetails;
-
     private School school;
+    private User user;
 
     public static UserInfoHolder getInstance() {
         return UserInfoHolderHelper.INSTANCE;
@@ -46,10 +46,16 @@ public class UserInfoHolder {
         this.school = school;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public static class UserInfoHolderHelper {
-
         static UserInfoHolder INSTANCE = new UserInfoHolder();
-
     }
 
 }
