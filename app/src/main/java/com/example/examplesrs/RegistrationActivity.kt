@@ -1,5 +1,8 @@
 package com.example.examplesrs
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -50,12 +53,21 @@ class RegistrationActivity : AppCompatActivity(), OnRegistrationListener {
     override fun onRegistrationComplete(result: String?) {
         progressDialogUtil.hide()
         if (result!!.isNotEmpty()) {
-            var snack = Snackbar.make(btnCancel, "Registration complete", Snackbar.LENGTH_INDEFINITE).setAction("Ok") {
-                finish()
-            }
-            snack.show()
+            notifyUser()
         } else {
             Toast.makeText(this@RegistrationActivity, "Error occurred", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun notifyUser() {
+        val builder = AlertDialog.Builder(this)
+            .setTitle("Registration")
+            .setMessage("Registration completed")
+            .setCancelable(false)
+            .setPositiveButton("Ok") { _, _ ->
+                finish()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 }

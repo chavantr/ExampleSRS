@@ -204,13 +204,13 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             false
         ) && UserInfoHolder.getInstance().schools[i].staff.equals(
             "no",
-            false
+            true
         ) && UserInfoHolder.getInstance().schools[i].security.equals(
             "no",
-            false
+            true
         ) && UserInfoHolder.getInstance().schools[i].rtedata.equals(
             "no",
-            false
+            true
         ) && UserInfoHolder.getInstance().schools[i].daycaredata.equals("no", false)
     }
 
