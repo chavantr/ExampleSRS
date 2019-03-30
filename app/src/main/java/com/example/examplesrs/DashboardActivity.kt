@@ -165,21 +165,44 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 if (UserInfoHolder.getInstance().schools.isNotEmpty()) {
                     var lst = ArrayList<School>()
                     for (i in UserInfoHolder.getInstance().schools.indices) {
-                        if (checkFalse(i)) {
+                        /*if (checkFalse(i)) {
                             lst.add(UserInfoHolder.getInstance().schools[i])
                         }
                         if (checkTrue(i)) {
                             if (checkFee(i)) {
                                 lst.add(UserInfoHolder.getInstance().schools[i])
                             }
+                        }*/
+
+                        if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
+                                UserInfoHolder.getInstance().schools[i].daycaredata
+                            ) ||
+                            UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
+                                UserInfoHolder.getInstance().schools[i].rtedata
+                            ) ||
+
+                            UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
+                                UserInfoHolder.getInstance().schools[i].trasport
+                            ) ||
+                            UserInfoHolder.getInstance().searchCriteria.qualified == convertYesToTrueAndNoToFalse(
+                                UserInfoHolder.getInstance().schools[i].staff
+                            )
+                        ) {
+                            if (UserInfoHolder.getInstance().searchCriteria.fee == 0 || UserInfoHolder.getInstance().searchCriteria.fee.toInt() >= UserInfoHolder.getInstance().schools[i].fee.toInt())
+                                lst.add(UserInfoHolder.getInstance().schools[i])
                         }
                     }
+
                     schoolAdapter = SchoolAdapter(lst)
                     schoolAdapter.setOnItemListener(this@DashboardActivity)
                     lstSchools.adapter = schoolAdapter
                 }
             }
         }
+    }
+
+    private fun convertYesToTrueAndNoToFalse(flag: String?): Boolean {
+        return flag.equals("yes", true)
     }
 
     private fun checkTrue(i: Int): Boolean {
