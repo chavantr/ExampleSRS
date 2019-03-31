@@ -7,4 +7,5 @@ object Constants {
     const val FIND_SCHOOL = "GetSchools"
     const val PERSONAL_DETAILS_IN = "SRS_Profile"
     const val UPDATE_PASSWORD = "SRS_ForgotPassword"
+    const val SRS_Rate = "SRS_Rate"
 }

@@ -165,6 +165,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 if (UserInfoHolder.getInstance().schools.isNotEmpty()) {
                     var lst = ArrayList<School>()
                     for (i in UserInfoHolder.getInstance().schools.indices) {
+
                         /*if (checkFalse(i)) {
                             lst.add(UserInfoHolder.getInstance().schools[i])
                         }
@@ -188,8 +189,16 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                                 UserInfoHolder.getInstance().schools[i].staff
                             )
                         ) {
-                            if (UserInfoHolder.getInstance().searchCriteria.fee == 0 || UserInfoHolder.getInstance().searchCriteria.fee.toInt() >= UserInfoHolder.getInstance().schools[i].fee.toInt())
+                            if (UserInfoHolder.getInstance().searchCriteria.fee == 0 || UserInfoHolder.getInstance().searchCriteria.fee.toInt() <= UserInfoHolder.getInstance().schools[i].fee.toInt())
                                 lst.add(UserInfoHolder.getInstance().schools[i])
+                        }
+
+                        if (UserInfoHolder.getInstance().searchCriteria.address.contains(
+                                UserInfoHolder.getInstance().schools[i].address,
+                                true
+                            )
+                        ) {
+                            lst.add(UserInfoHolder.getInstance().schools[i])
                         }
                     }
 

@@ -40,6 +40,8 @@
     <string name="reset_password">Reset password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="forgot_password">Forgot password</string>
+    <string name="rate">Rate</string>
+
 
     <string-array name="schoolboard">
         <item>Select</item>

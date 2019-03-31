@@ -44,5 +44,8 @@
     <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnViewMap"
             android:text="@string/view_on_map" android:layout_marginTop="15dp"/>
 
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnRate"
+            android:text="@string/rate" android:layout_marginTop="15dp"/>
+
 
 </LinearLayout>

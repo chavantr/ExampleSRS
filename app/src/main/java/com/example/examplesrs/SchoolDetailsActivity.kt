@@ -37,5 +37,11 @@ class SchoolDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnRate.setOnClickListener {
+            val intent = Intent(this@SchoolDetailsActivity, RateActivity::class.java)
+            intent.putExtra("sid", school.id)
+            startActivity(intent)
+        }
+
     }
 }

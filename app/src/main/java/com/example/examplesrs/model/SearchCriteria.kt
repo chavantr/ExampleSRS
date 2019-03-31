@@ -10,5 +10,6 @@ data class SearchCriteria(
     var topschool: Boolean = false,
     var tfacility: Boolean = false,
     var standard: String = "",
+    var address: String = "",
     var qualified: Boolean = false
 )

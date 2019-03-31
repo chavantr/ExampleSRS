@@ -33,6 +33,7 @@ class SearchSchoolResult : AppCompatActivity() {
             searchCriteria.tfacility = chkFacitran.isChecked
             searchCriteria.standard = spnStandarth.selectedItem.toString()
             searchCriteria.qualified = chkQuali.isChecked
+            searchCriteria.address = txtaddress.text.toString()
             UserInfoHolder.getInstance().searchCriteria = searchCriteria
             var intent = Intent()
             setResult(RESULT_OK)
