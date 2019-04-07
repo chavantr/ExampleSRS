@@ -52,10 +52,10 @@ class RegistrationActivity : AppCompatActivity(), OnRegistrationListener {
 
     override fun onRegistrationComplete(result: String?) {
         progressDialogUtil.hide()
-        if (result!!.isNotEmpty()) {
+        if (result!!.isNotEmpty() && result!! == "1") {
             notifyUser()
         } else {
-            Toast.makeText(this@RegistrationActivity, "Error occurred", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegistrationActivity, "Error occurred or user already exist", Toast.LENGTH_LONG).show()
         }
     }
 

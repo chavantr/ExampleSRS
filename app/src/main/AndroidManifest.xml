@@ -14,13 +14,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".RecommendedActivity" android:label="Recommended" android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".RateActivity">
         </activity>
-        <activity android:name=".ForgotPasswordActivity">
+        <activity android:name=".ForgotPasswordActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SchoolDetailsActivity">
+        <activity android:name=".SchoolDetailsActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SearchSchoolResult">
+        <activity android:name=".SearchSchoolResult" android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".ShowSchoolActivity"

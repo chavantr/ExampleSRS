@@ -58,6 +58,11 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         }
 
+        btnRecommended.setOnClickListener {
+            val intent = Intent(this@DashboardActivity, RecommendedActivity::class.java)
+            startActivity(intent)
+        }
+
         txtSearch.addTextChangedListener(filterSchool)
 
         btnFilter.setOnClickListener {
@@ -164,6 +169,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             if (requestCode == 1001) {
                 if (UserInfoHolder.getInstance().schools.isNotEmpty()) {
                     var lst = ArrayList<School>()
+                    var lstRecommended = ArrayList<School>()
                     for (i in UserInfoHolder.getInstance().schools.indices) {
 
                         /*if (checkFalse(i)) {
@@ -175,39 +181,86 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                             }
                         }*/
 
-                        if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
-                                UserInfoHolder.getInstance().schools[i].daycaredata
-                            ) ||
-                            UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
-                                UserInfoHolder.getInstance().schools[i].rtedata
-                            ) ||
+                        /* if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].daycaredata
+                             ) ||
+                             UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].rtedata
+                             ) ||
 
-                            UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
-                                UserInfoHolder.getInstance().schools[i].trasport
-                            ) ||
-                            UserInfoHolder.getInstance().searchCriteria.qualified == convertYesToTrueAndNoToFalse(
-                                UserInfoHolder.getInstance().schools[i].staff
-                            )
-                        ) {
+                             UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].trasport
+                             ) ||
+                             UserInfoHolder.getInstance().searchCriteria.qualified == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].staff
+                             )
+                         ) {*/
+
+
+                        if (checkAttribute(i) > 2) {
                             if (UserInfoHolder.getInstance().searchCriteria.fee == 0 || UserInfoHolder.getInstance().searchCriteria.fee.toInt() <= UserInfoHolder.getInstance().schools[i].fee.toInt())
                                 lst.add(UserInfoHolder.getInstance().schools[i])
+                        } else {
+                            lstRecommended.add(UserInfoHolder.getInstance().schools[i])
                         }
+                        // }
 
-                        if (UserInfoHolder.getInstance().searchCriteria.address.contains(
+                        if (UserInfoHolder.getInstance().searchCriteria.address.isNotEmpty() && UserInfoHolder.getInstance().searchCriteria.address.contains(
                                 UserInfoHolder.getInstance().schools[i].address,
                                 true
                             )
                         ) {
-                            lst.add(UserInfoHolder.getInstance().schools[i])
+                            if (!lst.contains(UserInfoHolder.getInstance().schools[i])) {
+                                lst.add(UserInfoHolder.getInstance().schools[i])
+                            }
+                        } else {
+                            if (!lstRecommended.contains(UserInfoHolder.getInstance().schools[i])) {
+                                lstRecommended.add(UserInfoHolder.getInstance().schools[i])
+                            }
                         }
                     }
-
+                    UserInfoHolder.getInstance().recommended = lstRecommended
                     schoolAdapter = SchoolAdapter(lst)
                     schoolAdapter.setOnItemListener(this@DashboardActivity)
                     lstSchools.adapter = schoolAdapter
                 }
             }
         }
+    }
+
+    private fun checkAttribute(i: Int): Int {
+        var count = 0;
+
+        if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
+                UserInfoHolder.getInstance().schools[i].daycaredata
+            )
+        ) {
+            count += 1;
+        }
+
+        if (UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
+                UserInfoHolder.getInstance().schools[i].rtedata
+            )
+        ) {
+            count += 1;
+        }
+
+
+        if (UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
+                UserInfoHolder.getInstance().schools[i].trasport
+            )
+        ) {
+            count += 1;
+        }
+
+        if (UserInfoHolder.getInstance().searchCriteria.qualified == convertYesToTrueAndNoToFalse(
+                UserInfoHolder.getInstance().schools[i].staff
+            )
+        ) {
+            count += 1;
+        }
+
+        return count
     }
 
     private fun convertYesToTrueAndNoToFalse(flag: String?): Boolean {

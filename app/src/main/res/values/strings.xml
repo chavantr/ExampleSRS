@@ -41,6 +41,7 @@
     <string name="enter_new_password">Enter new password</string>
     <string name="forgot_password">Forgot password</string>
     <string name="rate">Rate</string>
+    <string name="recommended">Recommended</string>
 
 
     <string-array name="schoolboard">

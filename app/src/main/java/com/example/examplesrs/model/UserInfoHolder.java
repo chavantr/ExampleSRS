@@ -10,6 +10,8 @@ public class UserInfoHolder {
     private School school;
     private User user;
 
+    private List<School> recommended;
+
     public static UserInfoHolder getInstance() {
         return UserInfoHolderHelper.INSTANCE;
     }
@@ -52,6 +54,14 @@ public class UserInfoHolder {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<School> getRecommended() {
+        return recommended;
+    }
+
+    public void setRecommended(List<School> recommended) {
+        this.recommended = recommended;
     }
 
     public static class UserInfoHolderHelper {
