@@ -1,25 +1,33 @@
 package com.example.examplesrs
 
-import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.SeekBar
+import com.example.examplesrs.model.School
 import com.example.examplesrs.model.SearchCriteria
 import com.example.examplesrs.model.UserInfoHolder
+import com.example.examplesrs.process.GetSchoolsWithRequest
+import com.example.examplesrs.process.OnFindSchoolWithCriteriaListener
+import com.example.examplesrs.process.ProgressDialogUtil
 import kotlinx.android.synthetic.main.activity_search_school_result.*
+import org.json.JSONObject
 
-class SearchSchoolResult : AppCompatActivity() {
+class SearchSchoolResult : AppCompatActivity(), OnFindSchoolWithCriteriaListener {
 
 
     private var fee: Int = 0
     private var distance: Int = 0
+    private lateinit var progressDialogUtil: ProgressDialogUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_school_result)
+
+
         skDistance.incrementProgressBy(100)
         skDistance.max = 100000
+
         skDistance.setOnSeekBarChangeListener(distanceListener)
         btnSearch.setOnClickListener {
             var searchCriteria = SearchCriteria()
@@ -35,10 +43,32 @@ class SearchSchoolResult : AppCompatActivity() {
             searchCriteria.qualified = chkQuali.isChecked
             searchCriteria.address = txtaddress.text.toString()
             UserInfoHolder.getInstance().searchCriteria = searchCriteria
-            var intent = Intent()
+            progressDialogUtil.show()
+            val getSchoolWithRequest = GetSchoolsWithRequest()
+            val jRequest = JSONObject()
+            val param = JSONObject()
+            param.put("IBoard", searchCriteria.iboard)
+            param.put("DayCare", check(searchCriteria.dayCare))
+            param.put("RTB", check(searchCriteria.rtb))
+            param.put("TransportFacility", check(searchCriteria.tfacility))
+            param.put("Qualified", check(searchCriteria.qualified))
+            param.put("Security", check(searchCriteria.topschool))
+            param.put("Location", searchCriteria.address)
+            param.put("Fees", if (txtFees.text!!.isEmpty()) 0 else txtFees.text.toString().toInt())
+            jRequest.put("request", param)
+            getSchoolWithRequest.setOnSchoolListenerWithCriteria(this, jRequest)
+
+            /*var intent = Intent()
             setResult(RESULT_OK)
-            finish()
+            finish()*/
         }
+
+        progressDialogUtil = ProgressDialogUtil(this)
+
+    }
+
+    private fun check(value: Boolean): String? {
+        return if (value) "yes" else "no"
     }
 
     private val feeListener = object : SeekBar.OnSeekBarChangeListener {
@@ -80,6 +110,15 @@ class SearchSchoolResult : AppCompatActivity() {
 
         }
 
+    }
+
+
+    override fun onSchoolWithCriteria(result: List<School>?) {
+        progressDialogUtil.hide()
+        UserInfoHolder.getInstance().schools = result
+        var intent = Intent()
+        setResult(RESULT_OK)
+        finish()
     }
 
 }

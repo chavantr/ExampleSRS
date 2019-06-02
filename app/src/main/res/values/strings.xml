@@ -21,7 +21,7 @@
     <string name="distance">Distance</string>
     <string name="day_care">Day care</string>
     <string name="rtb">RTE</string>
-    <string name="top_school_in_city">Top school in city</string>
+    <string name="top_school_in_city">Security</string>
     <string name="transport_facility">Transport facility</string>
     <string name="qualified_staff">Qualified staff</string>
     <!--<string name="search">Search</string>-->
@@ -42,6 +42,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="rate">Rate</string>
     <string name="recommended">Recommended</string>
+    <string name="enter_current_password">Enter current password</string>
 
 
     <string-array name="schoolboard">

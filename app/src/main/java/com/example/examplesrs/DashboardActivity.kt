@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.example.examplesrs.joint.OnSchoolSelectedListener
 import com.example.examplesrs.joint.SchoolAdapter
@@ -142,7 +143,7 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 return true
             }
             R.id.nav_change_pass -> {
-                val intent = Intent(this@DashboardActivity, ForgotPasswordActivity::class.java)
+                val intent = Intent(this@DashboardActivity, ForgotPasswordInnrtActivity::class.java)
                 startActivity(intent)
                 drawer_layout.closeDrawer(GravityCompat.START)
                 return true
@@ -168,67 +169,83 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         if (resultCode == RESULT_OK) {
             if (requestCode == 1001) {
                 if (UserInfoHolder.getInstance().schools.isNotEmpty()) {
-                    var lst = ArrayList<School>()
-                    var lstRecommended = ArrayList<School>()
-                    for (i in UserInfoHolder.getInstance().schools.indices) {
 
-                        /*if (checkFalse(i)) {
-                            lst.add(UserInfoHolder.getInstance().schools[i])
-                        }
-                        if (checkTrue(i)) {
-                            if (checkFee(i)) {
-                                lst.add(UserInfoHolder.getInstance().schools[i])
-                            }
-                        }*/
+                    /* var lst = ArrayList<School>()
 
-                        /* if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
+                     var lstRecommended = ArrayList<School>()
+
+                     lstRecommended.clear()
+
+                     for (i in UserInfoHolder.getInstance().schools.indices) {
+
+                         if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
                                  UserInfoHolder.getInstance().schools[i].daycaredata
-                             ) ||
-                             UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
-                                 UserInfoHolder.getInstance().schools[i].rtedata
-                             ) ||
-
-                             UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
-                                 UserInfoHolder.getInstance().schools[i].trasport
-                             ) ||
-                             UserInfoHolder.getInstance().searchCriteria.qualified == convertYesToTrueAndNoToFalse(
-                                 UserInfoHolder.getInstance().schools[i].staff
                              )
-                         ) {*/
+                         ) {
+                             lst.add(UserInfoHolder.getInstance().schools[i])
+                         }
 
 
-                        if (checkAttribute(i) > 2) {
-                            if (UserInfoHolder.getInstance().searchCriteria.fee == 0 || UserInfoHolder.getInstance().searchCriteria.fee.toInt() <= UserInfoHolder.getInstance().schools[i].fee.toInt())
-                                lst.add(UserInfoHolder.getInstance().schools[i])
-                        } else {
-                            lstRecommended.add(UserInfoHolder.getInstance().schools[i])
-                        }
-                        // }
+                     }
 
-                        if (UserInfoHolder.getInstance().searchCriteria.address.isNotEmpty() && UserInfoHolder.getInstance().searchCriteria.address.contains(
-                                UserInfoHolder.getInstance().schools[i].address,
-                                true
-                            )
-                        ) {
-                            if (!lst.contains(UserInfoHolder.getInstance().schools[i])) {
-                                lst.add(UserInfoHolder.getInstance().schools[i])
-                            }
-                        } else {
-                            if (!lstRecommended.contains(UserInfoHolder.getInstance().schools[i])) {
-                                lstRecommended.add(UserInfoHolder.getInstance().schools[i])
-                            }
-                        }
-                    }
-                    UserInfoHolder.getInstance().recommended = lstRecommended
-                    schoolAdapter = SchoolAdapter(lst)
+
+                     for (i in UserInfoHolder.getInstance().schools.indices) {
+
+                         if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].daycaredata
+                             )
+                         ) {
+                             lst.add(UserInfoHolder.getInstance().schools[i])
+                         }
+
+
+                     }
+
+                     for (i in UserInfoHolder.getInstance().schools.indices) {
+
+                         if (UserInfoHolder.getInstance().searchCriteria.rtb == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].rtedata
+                             )
+                         ) {
+                             if (!lst.contains(UserInfoHolder.getInstance().schools[i])) {
+                                 lst.add(UserInfoHolder.getInstance().schools[i])
+                             }
+                         }
+                     }
+
+
+                     for (i in UserInfoHolder.getInstance().schools.indices) {
+
+                         if (UserInfoHolder.getInstance().searchCriteria.tfacility == convertYesToTrueAndNoToFalse(
+                                 UserInfoHolder.getInstance().schools[i].trasport
+                             )
+                         ) {
+                             if (!lst.contains(UserInfoHolder.getInstance().schools[i])) {
+                                 lst.add(UserInfoHolder.getInstance().schools[i])
+                             }
+                         }
+                     }*/
+
+
+                    //UserInfoHolder.getInstance().recommended = lstRecommended
+                    schoolAdapter = SchoolAdapter(UserInfoHolder.getInstance().schools)
                     schoolAdapter.setOnItemListener(this@DashboardActivity)
                     lstSchools.adapter = schoolAdapter
+                    btnRecommended.visibility = View.VISIBLE
+
+                    /*if (lstRecommended.isNotEmpty()) {
+                        btnRecommended.visibility = View.VISIBLE
+                    } else {
+                        btnRecommended.visibility = View.INVISIBLE
+                    }*/
+
                 }
             }
         }
     }
 
     private fun checkAttribute(i: Int): Int {
+
         var count = 0;
 
         if (UserInfoHolder.getInstance().searchCriteria.dayCare == convertYesToTrueAndNoToFalse(

@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
-                                             tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
 
 
-    <ImageView android:layout_width="wrap_content" android:src="@drawable/ic_location_city_black_24dp"
-               android:layout_height="wrap_content" android:id="@+id/imgLogo"
-               android:contentDescription="@string/app_name"
-               app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-               app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-               android:layout_marginTop="24dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"/>
+        <ImageView android:layout_width="wrap_content" android:src="@drawable/ic_location_city_black_24dp"
+                   android:layout_height="wrap_content" android:id="@+id/imgLogo"
+                   android:contentDescription="@string/app_name"
+                   app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                   app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                   android:layout_marginTop="24dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"/>
 
-    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   android:id="@+id/tilUserName"
-                                                   app:layout_constraintTop_toTopOf="parent"
-                                                   android:layout_marginTop="180dp"
-                                                   app:layout_constraintStart_toStartOf="parent"
-                                                   android:layout_marginStart="16dp"
-                                                   app:layout_constraintEnd_toEndOf="parent"
-                                                   android:layout_marginEnd="16dp">
+        <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:id="@+id/tilUserName"
+                                                       app:layout_constraintTop_toTopOf="parent"
+                                                       android:layout_marginTop="180dp"
+                                                       app:layout_constraintStart_toStartOf="parent"
+                                                       android:layout_marginStart="16dp"
+                                                       app:layout_constraintEnd_toEndOf="parent"
+                                                       android:layout_marginEnd="16dp">
 
-        <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:hint="@string/enter_username"
-                                                         android:id="@+id/txtUserName"/>
-
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content" android:id="@+id/tilPassword"
-                                                   app:layout_constraintTop_toBottomOf="@id/tilUserName"
-                                                   android:layout_marginTop="16dp"
-                                                   app:layout_constraintStart_toStartOf="parent"
-                                                   android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-                                                   app:layout_constraintEnd_toEndOf="parent"
-                                                   android:layout_marginEnd="16dp" android:layout_marginRight="16dp">
+            <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                                                             android:layout_height="wrap_content"
+                                                             android:maxLines="1"
+                                                             android:hint="@string/enter_username"
+                                                             android:imeOptions="actionNext"
+                                                             android:id="@+id/txtUserName"/>
 
 
-        <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:hint="@string/enter_password"
-                                                         android:id="@+id/txtPassword"
-                                                         android:inputType="textPassword"/>
+        </android.support.design.widget.TextInputLayout>
 
 
-    </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:id="@+id/tilPassword"
+                                                       app:layout_constraintTop_toBottomOf="@id/tilUserName"
+                                                       android:layout_marginTop="16dp"
+                                                       app:layout_constraintStart_toStartOf="parent"
+                                                       android:layout_marginLeft="16dp"
+                                                       android:layout_marginStart="16dp"
+                                                       app:layout_constraintEnd_toEndOf="parent"
+                                                       android:layout_marginEnd="16dp"
+                                                       android:layout_marginRight="16dp">
 
 
-    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnLogin"
-            android:text="@string/sign_in" app:layout_constraintTop_toBottomOf="@id/tilPassword"
-            android:layout_marginTop="24dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-    />
+            <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                                                             android:layout_height="wrap_content"
+                                                             android:hint="@string/enter_password"
+                                                             android:maxLines="1"
+                                                             android:id="@+id/txtPassword"
+                                                             android:imeOptions="actionDone"
+                                                             android:inputType="textPassword"/>
+
+        </android.support.design.widget.TextInputLayout>
 
 
-    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnSignUp"
-            android:text="@string/sign_up" app:layout_constraintTop_toBottomOf="@id/btnLogin"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"/>
-
-    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnForgotPassword"
-            android:text="@string/forgot_password" app:layout_constraintTop_toBottomOf="@id/btnSignUp"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"/>
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnLogin"
+                android:text="@string/sign_in" app:layout_constraintTop_toBottomOf="@id/tilPassword"
+                android:layout_marginTop="24dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+        />
 
 
-</android.support.constraint.ConstraintLayout>
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnSignUp"
+                android:text="@string/sign_up" app:layout_constraintTop_toBottomOf="@id/btnLogin"
+                android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"/>
+
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/btnForgotPassword"
+                android:text="@string/forgot_password" app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+                android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

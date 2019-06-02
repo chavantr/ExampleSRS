@@ -5,16 +5,25 @@ import com.example.examplesrs.model.School
 import org.json.JSONArray
 import org.json.JSONObject
 
-class FindSchoolAsync : AsyncTask<JSONObject, Void, List<School>?>() {
-    private lateinit var onSearchSchoolListener: OnSearchSchoolListener
+class GetSchoolsWithRequestRecommended : AsyncTask<JSONObject, Void, List<School>?>() {
+
+    private lateinit var onFindSchoolWithCriteriaListener: OnFindSchoolWithCriteriaListener
+
     override fun doInBackground(vararg params: JSONObject?): List<School>? {
-        val response: String? = HttpConnectionUtil().requestGet(Constants.URL + Constants.FIND_SCHOOL)
-        return if (response.isNullOrBlank()) null else {
+
+        var response: String? =
+            HttpConnectionUtil().requestPost(Constants.URL + Constants.FIND_SCHOOLS_WITH_RECOMMENDED, params[0])
+
+        if (response!!.isNullOrEmpty()) return null else {
+
             var lst = ArrayList<School>()
-            val jNodes = JSONArray(response)
-            for (i in 0..(jNodes.length() - 1)) {
-                val jNode = jNodes.getJSONObject(i)
-                var school = School()
+
+            var jSchools = JSONArray(response)
+
+            for (i in 0..(jSchools.length() - 1)) {
+                val jNode = jSchools.getJSONObject(i)
+
+                var school = School();
                 school.id = jNode.getInt("Id")
                 school.name = jNode.getString("Name")
                 school.address = jNode.getString("Address")
@@ -29,18 +38,26 @@ class FindSchoolAsync : AsyncTask<JSONObject, Void, List<School>?>() {
                 school.daycaredata = jNode.getString("Daycare")
                 school.websitedata = jNode.getString("Websitedata")
                 lst.add(school)
+
             }
-            lst
+
+            return lst
+
         }
+
+
     }
 
     override fun onPostExecute(result: List<School>?) {
         super.onPostExecute(result)
-        onSearchSchoolListener.onFindSchool(result)
+        onFindSchoolWithCriteriaListener.onSchoolWithCriteria(result)
     }
 
-    fun setOnFindSchoolListener(onSearchSchoolListener: OnSearchSchoolListener, request: JSONObject) {
-        this.onSearchSchoolListener = onSearchSchoolListener
+    fun setOnSchoolListenerWithCriteria(
+        onFindSchoolWithCriteriaListener: OnFindSchoolWithCriteriaListener,
+        request: JSONObject?
+    ) {
+        this.onFindSchoolWithCriteriaListener = onFindSchoolWithCriteriaListener
         super.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, request)
     }
 
